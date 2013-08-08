@@ -5,7 +5,7 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-BIN_DIR=$(cd $(dirname $0);cd cloud; pwd) # absolute path
+BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 
 # source in common functions
 . $BIN_DIR/common.sh
@@ -24,7 +24,7 @@ for DIR in $PLAY_PATH $IVY_PATH ; do
   fi
 done
 
-PLAY_VERSION=$(get_play_version conf/dependencies.yml)
+PLAY_VERSION=$(get_play_version cloud/conf/dependencies.yml)
 DEFAULT_PLAY_VERSION="1.2.4"
 VERSION_DECLARED=true
 
@@ -54,10 +54,10 @@ if [ -f .ivy2/ivysettings.xml ]; then
   rm .ivy2/ivysettings.xml 
   echo "done"
 fi
-if [ -f conf/ivysettings.xml ]; then
+if [ -f cloud/conf/ivysettings.xml ]; then
   echo -n "  ---> Installing custom ivysettings.xml..."
   [ -d .ivy2 ] || mkdir .ivy2
-  cp conf/ivysettings.xml .ivy2/ivysettings.xml
+  cp /cloud/conf/ivysettings.xml .ivy2/ivysettings.xml
 else
   echo -n "  ---> Installing Heroku default ivysettings.xml..."
   curl --silent --max-time 10 --location $PLAY_SETTINGS_URL --create-dirs --output .ivy2/ivysettings.xml
@@ -69,7 +69,7 @@ echo "-----> Building Play! application..."
 $PLAY_PATH/play version | sed -u 's/^/       /'
 
 # Precompile the Play! application at the root of $BUILD_DIR
-APP_DIR=./
+APP_DIR=./cloud/
 echo "       Building Play! application at directory $APP_DIR"
 
 DEPENDENCIES_CMD="$PLAY_PATH/play dependencies $APP_DIR --forProd --forceCopy --silent --clearcache -Duser.home=$BUILD_DIR 2>&1"
