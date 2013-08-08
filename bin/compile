@@ -57,7 +57,7 @@ fi
 if [ -f cloud/conf/ivysettings.xml ]; then
   echo -n "  ---> Installing custom ivysettings.xml..."
   [ -d .ivy2 ] || mkdir .ivy2
-  cp /cloud/conf/ivysettings.xml .ivy2/ivysettings.xml
+  cp cloud/conf/ivysettings.xml .ivy2/ivysettings.xml
 else
   echo -n "  ---> Installing Heroku default ivysettings.xml..."
   curl --silent --max-time 10 --location $PLAY_SETTINGS_URL --create-dirs --output .ivy2/ivysettings.xml
