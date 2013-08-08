@@ -2,7 +2,7 @@
 # bin/compile <build-dir> <cache-dir>
 
 # Parse args
-BUILD_DIR=$1
+BUILD_DIR=cloud
 CACHE_DIR=$2
 
 BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
@@ -69,7 +69,7 @@ echo "-----> Building Play! application..."
 $PLAY_PATH/play version | sed -u 's/^/       /'
 
 # Precompile the Play! application at the root of $BUILD_DIR
-APP_DIR=./cloud/
+APP_DIR=./
 echo "       Building Play! application at directory $APP_DIR"
 
 DEPENDENCIES_CMD="$PLAY_PATH/play dependencies $APP_DIR --forProd --forceCopy --silent --clearcache -Duser.home=$BUILD_DIR 2>&1"
