@@ -2,10 +2,10 @@
 # bin/compile <build-dir> <cache-dir>
 
 # Parse args
-BUILD_DIR=cloud
+BUILD_DIR=$1
 CACHE_DIR=$2
 
-BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
+BIN_DIR=$(cd $(dirname $0);cd cloud; pwd) # absolute path
 
 # source in common functions
 . $BIN_DIR/common.sh
