@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Extracted from https://github.com/ulrich/macaron-factory/blob/master/.gitignore
 # Ignore all dotfiles...
 .*
@@ -20,3 +21,7 @@ test-result
 server.pid
 *.iml
 *.eml
+=======
+build/
+tmp/
+>>>>>>> 181f51991dad1e5ff5bc489d653989aaf35d1e5c
