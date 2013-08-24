@@ -72,6 +72,13 @@ $PLAY_PATH/play version | sed -u 's/^/       /'
 APP_DIR=./cloud/
 echo "       Building Play! application at directory $APP_DIR"
 
+#for om
+DEPENDENCIES_CMD="$PLAY_PATH/play dependencies $APP_DIR/../om --forProd --forceCopy --silent --clearcache -Duser.home=$BUILD_DIR 2>&1"
+echo "       Resolving dependencies: $DEPENDENCIES_CMD"
+eval "$DEPENDENCIES_CMD" | sed -u 's/^/       /'
+check_compile_status
+
+#for cloud
 DEPENDENCIES_CMD="$PLAY_PATH/play dependencies $APP_DIR --forProd --forceCopy --silent --clearcache -Duser.home=$BUILD_DIR 2>&1"
 echo "       Resolving dependencies: $DEPENDENCIES_CMD"
 eval "$DEPENDENCIES_CMD" | sed -u 's/^/       /'
