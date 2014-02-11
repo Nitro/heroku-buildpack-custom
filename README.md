@@ -14,7 +14,7 @@ Example usage:
     $ ls
     app	conf	lib	public	test
 
-    $ heroku create --stack cedar --buildpack http://github.com/heroku/heroku-buildpack-play.git
+    $ heroku create --stack cedar --buildpack https://github.com/Nitro/heroku-buildpack-custom
 
     $ git push heroku master
     ...
@@ -30,9 +30,9 @@ Example usage:
            ~ |  __/|_|\____|\__ (_)
            ~ |_|            |__/   
            ~
-           ~ play! 1.2.3, http://www.playframework.org
+           ~ play! 1.2.6, http://www.playframework.org
            ~
-           1.2.3
+           1.2.6
            Building Play! application at directory ./
     ...
 
@@ -43,9 +43,9 @@ Play Versions
 
 The buildpack will read the Play! version that your application expects from your dependencies.yml file. The version comes on the same line where you already declare a dependency on the Play! framework itself:
 
-    - play 1.2.4
+    - play 1.2.6
 
-If you don't specify a version it will be defaulted for you and you'll see a warning message in your build output. It is a best practice to specify the version off the framework that you intend to use.
+If you don't specify a version it will be defaulted for you to 1.2.6 and you'll see a warning message in your build output. It is a best practice to specify the version off the framework that you intend to use.
 
 Once your application is live you can upgrade the Play! version simply by changing the version in your dependencies.yml. If you don't specify a version and use the default version your application will not be updated when the default version is updated. This is so that you don't have to deal with your application being upgraded unexpectedly.
 
